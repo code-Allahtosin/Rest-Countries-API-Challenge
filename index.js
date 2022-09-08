@@ -8,7 +8,7 @@ const   inputSearch   =     document.getElementById('search-input')
 
 fetchAll() 
 
-inputSearch.addEventListener('keyup', B)
+window.onload(inputSearch.addEventListener('keyup', B))
 
 
 
