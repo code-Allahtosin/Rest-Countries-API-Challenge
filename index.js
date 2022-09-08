@@ -1,4 +1,6 @@
 let     concat
+let     concatAll             //Value of all countries saved. No need for refetching
+const   regionFilter        =     document.getElementById("Filter-by-Region")
 const   abeg          =     document.getElementById('countries-section')
 const   inputSearch   =     document.getElementById('search-input')
 
@@ -7,8 +9,15 @@ const   inputSearch   =     document.getElementById('search-input')
 // import fetch from "node-fetch"
 
 fetchAll() 
+inputSearch.addEventListener('keyup', B)
+regionFilter.addEventListener('click', filter)
 
-window.onload(inputSearch.addEventListener('keyup', B))
+
+
+
+
+
+
 
 
 
@@ -35,6 +44,7 @@ async function fetchAll() {
             console.log("done")
             concat=''
             data.forEach((D)=>render(D) )
+            concatAll=concat
             abeg.innerHTML =concat
 
             return
@@ -65,4 +75,31 @@ function B(){
 
 fetchB()
 }
+
+function filter(){
+    let Query=regionFilter.value
+    if (Query=='all'){
+        abeg.innerHTML =concatAll
+    } else{
+        let Filter = `https://restcountries.com/v2/region/${Query}`
+        async function fetchFilter() {
+            try {   
+                    let response= await fetch(Filter)
+                    let data = await response.json()
+                    
+                    
+                    concat=''
+                    data.forEach((D)=>render(D ))
+                    abeg.innerHTML =concat
+        
+                    return
+                }  catch (error) {
+                        console.log(error)
+                    }
+                }       
+
+    fetchFilter()
+    }
+}
+
 
