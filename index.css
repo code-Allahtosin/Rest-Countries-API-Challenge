@@ -1,0 +1,156 @@
+/*
+- Mobile: 375px
+- Desktop: 1440px
+
+### Body Copy
+- Homepage Items: 14px
+- Detail Page: 16px 
+
+## Icons
+For the icons, you can use a font icon library. Don't worry if the icons that you choose don't look exactly like they do on the design.
+Some suggestions can be found below:
+- [Font Awesome](https://fontawesome.com)
+- [IcoMoon](https://icomoon.io)
+- [Ionicons](https://ionicons.com)
+*/
+
+:root{
+    --Dark-Blue:       hsl(209, 23%, 22%);   /*(Dark Mode Elements)*/                     
+    --Very-Dark-Blue:  hsl(207, 26%, 17%);   /*(Dark Mode Background)*/                   
+    --Very-Dark-Blue:  hsl(200, 15%, 8%);    /*(Light Mode Text)*/                        
+    --Dark-Gray:       hsl(0, 0%, 52%);      /*(Light Mode Input)*/                       
+    --Very-Light-Gray: hsl(0, 0%, 98%);      /*(Light Mode Background)*/                  
+    --White:           hsl(0, 0%, 100%);     /*(Dark Mode Text & Light Mode Elements)*/   
+    --Page-padding: 100px;  
+    --tile-radius: 15px;
+}
+
+
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    position: absolute;
+    min-width:1150px;
+    width: 100%;
+    background: var(--Very-Light-Gray);
+    color: var(--Very-Dark-Blue)
+
+    
+
+}div{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    box-sizing: border-box;
+}
+.header, .filters{
+    width: 100%;
+    height: 60px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    box-shadow: 0px -3px 10px var(--Dark-Gray) ;
+    padding: 0px var(--Page-padding)
+
+}.header div{ font-weight: 600; font-size: 18px;}
+.moon{
+    height:14px;
+    position: absolute; height: 15px; left:-22px; bottom: 1px;
+ 
+}
+
+.filters{
+    height: 100px;
+    background: initial;
+    box-shadow: none;
+}
+.country-search input{
+    padding: 12px 25px 12px 50px;
+    background: white;
+    width:300px;
+    border-radius: 5px;
+    border: none;
+
+    box-shadow: 0px 0px 10px -6px var(--Dark-Gray) ;
+
+} .country-search input::placeholder{ font-size: 12px;}
+.search-img{opacity: 0.58;
+    position: absolute; height: 15px; top:50%; transform:translateY(-50%); left: 20px
+}
+.continent-filter select{
+    box-sizing: border-box;
+    padding: 12px 8px 12px 8px;
+    background: white;
+    width:100px;
+    border-radius: 5px;
+    border: none;
+
+    box-shadow: 0px 0px 10px -6px var(--Dark-Gray) ;
+}
+
+.countries-section{
+    padding: 15px var(--Page-padding);
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px);
+    grid-gap: 50px;
+    grid-auto-rows:320px ;
+    grid-auto-flow: row;
+    justify-content: space-between;
+
+
+
+    
+}
+.country-tile{
+    height:100%;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 3px 15px -10px var(--Dark-Gray) ;
+    border-radius: var(--tile-radius);
+}
+.country-tile>img{
+    border-radius: var(--tile-radius) var(--tile-radius) 0px 0px;
+    width:100%;
+    height: 45%;
+
+}
+.tile-details{
+    padding:10px 30px;
+}
+.bold{
+    font-weight: bold;
+}
+.name{
+    font-weight: 800;
+    font-size:18px ;
+    padding: 15px 0px ;
+
+}
+.population{
+    padding: 5px 0px ;
+
+}
+.region{
+    padding: 5px 0px ;
+
+}
+.capital{
+    padding: 5px 0px ;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.hide{ display: none;}
