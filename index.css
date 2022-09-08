@@ -96,7 +96,7 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fit, 270px);
     grid-gap: 50px;
-    grid-auto-rows:320px ;
+    grid-auto-rows:350px ;
     grid-auto-flow: row;
     justify-content: space-between;
 
