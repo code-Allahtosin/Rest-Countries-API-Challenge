@@ -1,16 +1,27 @@
 let     concat
 let     concatAll             //Value of all countries saved. No need for refetching
+let data
 const   regionFilter        =     document.getElementById("Filter-by-Region")
 const   abeg          =     document.getElementById('countries-section')
 const   inputSearch   =     document.getElementById('search-input')
 
 
 
-// import fetch from "node-fetch"
-
 fetchAll() 
 inputSearch.addEventListener('keyup', B)
-regionFilter.addEventListener('click', filter)
+regionFilter.addEventListener('mouseup', filter)
+
+
+
+
+
+
+function run(i) {
+
+    addClass('filters', 'hide' )
+    addClass('countries-section', 'hide')
+    removeClass('details-page', 'hide')
+    let needed = data[i]
 
 
 
@@ -18,13 +29,16 @@ regionFilter.addEventListener('click', filter)
 
 
 
+    function addClass(elementId,className){document.getElementById(elementId).classList.add(className)}
+    function removeClass(elementId,className){document.getElementById(elementId).classList.remove(className)}
+
+}
 
 
-
-function render(country) {
+function render(country,index) {
 
     concat+=`
-    <div class="country-tile"> 
+    <div class="country-tile" id="${index}" onclick="run(${index})" tabindex="0"> 
                     <img loading="lazy" src="${country.flag}" alt="">
                     <div class="tile-details">
                         <div class="name">${country.name}</div>
@@ -39,11 +53,11 @@ function render(country) {
 
 async function fetchAll() {
     try {   
-           let response= await fetch("https://restcountries.com/v2/all?fields=name,capital,currencies,population,languages,region,flag,borders,subregion,tld")
-            let data = await response.json()
+           let response= await fetch("https://restcountries.com/v2/all?fields=name,capital,currencies,population,languages,region,flag,borders,subregion,topLevelDomain,nativeName,alpha3Code")
+            data = await response.json()
             console.log("done")
             concat=''
-            data.forEach((D)=>render(D) )
+            data.forEach((D,I)=>render(D,I) )
             concatAll=concat
             abeg.innerHTML =concat
 
@@ -53,18 +67,17 @@ async function fetchAll() {
             }
 }       
 
-
 function B(){
     let Query=inputSearch.value
     let B = `https://restcountries.com/v2/name/${Query}`
     async function fetchB() {
         try {   
                 let response= await fetch(B)
-                let data = await response.json()
+                data = await response.json()
                 
                 
                 concat=''
-                data.forEach((D)=>render(D ))
+                data.forEach((D,I)=>render(D,I ))
                 abeg.innerHTML =concat
     
                 return
@@ -78,18 +91,18 @@ fetchB()
 
 function filter(){
     let Query=regionFilter.value
-    if (Query=='all'){
+    if (Query=='all'||Query == 'none'){
         abeg.innerHTML =concatAll
     } else{
         let Filter = `https://restcountries.com/v2/region/${Query}`
         async function fetchFilter() {
             try {   
                     let response= await fetch(Filter)
-                    let data = await response.json()
+                    data = await response.json()
                     
                     
                     concat=''
-                    data.forEach((D)=>render(D ))
+                    data.forEach((D,I)=>render(D,I))
                     abeg.innerHTML =concat
         
                     return

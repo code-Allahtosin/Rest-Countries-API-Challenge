@@ -45,7 +45,7 @@ body{
 }
 .header, .filters{
     width: 100%;
-    height: 60px;
+    height: 70px;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -110,6 +110,7 @@ body{
     background: white;
     box-shadow: 0px 3px 15px -10px var(--Dark-Gray) ;
     border-radius: var(--tile-radius);
+    cursor: pointer;
 }
 .country-tile>img{
     border-radius: var(--tile-radius) var(--tile-radius) 0px 0px;
@@ -143,11 +144,71 @@ body{
     padding: 5px 0px ;
 
 }
+.details-page{
+    padding: 50px var(--Page-padding) 10px;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.back-div{
+    width: 100%;
+    height: 60px;
+
+    align-items: center;
+
+
+}.back-div button{
+    box-shadow: 0px 0px 9px -4px var(--Dark-Gray) ;
+    border: none;
+    align-items: center;
+    padding: 12px 40px;
+    background: white;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+.back-div button img{
+    width: 22px; 
+    height: 12px;
+    object-fit: cover;
+    padding-right: 10px;
+}
 
 
 
+.flag-text-container{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    gap: 70px;
 
 
+
+}
+.flag-container{
+    width: 50%;
+}
+.flag-container img{
+    width: 100%;
+    height: 500px;
+    object-fit: fill;
+}
+.text-container{
+    display: grid;
+    grid-template-columns: minmax(270px,1fr) minmax(270px,1fr);
+    grid-template-rows: 50px auto 50px;
+}
+.country-header{
+    grid-column:1/-1 ;
+    font-weight: 900;
+    font-size: 38px;
+
+}
+.border-countries{
+    grid-column:1/-1 ;
+ 
+}
 
 
 
