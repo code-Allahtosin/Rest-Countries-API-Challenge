@@ -7,6 +7,21 @@ const   abeg          =     document.getElementById('countries-section')
 const   inputSearch   =     document.getElementById('search-input')
 const   back          =     document.getElementById('back')
 const   details       =     document.getElementById('flag-text-container')
+const   dark          =     document.getElementById('dark-mode')
+const   styleLink     =     document.getElementById('style')
+const   moon1         =     document.getElementById('moon1')
+const   moon2         =     document.getElementById('moon2')
+
+
+
+  
+if (localStorage.getItem('mode')=='dark'){
+    styleLink.setAttribute('href', 'indexDark.css'); 
+    }else{
+    styleLink.setAttribute('href', 'index.css');
+}
+   
+     
 
 fetchAll() 
 inputSearch.addEventListener('keyup', search)
@@ -15,7 +30,22 @@ back.addEventListener('click', ()=>{addClass('details-page', 'hide'); removeClas
 
 
 
+dark.addEventListener('click',()=>{
+    if (styleLink.getAttribute('href')=='index.css'){
+    styleLink.setAttribute('href', 'indexDark.css') 
+    addClass('moon1', 'hide')
+    removeClass('moon2', 'hide')
+    localStorage.clear()
+    localStorage.setItem('mode', 'dark')
+  } else{
+    styleLink.setAttribute('href', 'index.css') 
+    addClass('moon2', 'hide')
+    removeClass('moon1', 'hide')
 
+    localStorage.clear()
+    localStorage.setItem('mode', 'light')}
+}
+)
 
 function run(i) {
 
