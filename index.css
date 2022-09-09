@@ -476,12 +476,15 @@ span{
         box-shadow: none;
         flex-direction: column;
     }
+    .country-search{
+        width:100%
+    }
     .country-search input{
-        /* box-sizing: border-box; */
+        box-sizing: border-box;
         margin-top:15px;
         padding: 12px 25px 12px 50px;
         background: white;
-        width:83%;
+        width:100%;
         border-radius: 5px;
         border: none;
     
@@ -510,7 +513,7 @@ span{
         grid-gap: 50px;
         grid-auto-rows:350px ;
         grid-auto-flow: row;
-        justify-content: space-between;
+        justify-content: center;
     
     
     
