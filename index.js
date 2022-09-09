@@ -53,10 +53,10 @@ function run(i) {
                     <p><b>Top Level Domain:</b> <span> ${  needed.topLevelDomain }  </span></p>
                 </div>
                 <div>
-                    <p><b>Currencies:</b> <span>  ${  needed.currencies[this.name]  }   </span></p>
+                    <p><b>Currencies:</b> <span>  ${  giveMe(needed.currencies)  }   </span></p>
                 </div>
                 <div>
-                    <p><b>Languages:</b><span> ${ needed.languages  }  </span></p>
+                    <p><b>Languages:</b><span> ${ giveMe(needed.languages)  }  </span></p>
                 </div>
             </div>
             <div class="border-countries"> <b>Border Countries:</b> <span>  ${needed.borders  }   </span></div>
@@ -154,4 +154,10 @@ function filter(){
 
 function formatPop(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+}
+function giveMe(source) {
+    let b=[]
+    source.forEach((a)=>{b.push(a.name)})
+    
+    return b
+}
