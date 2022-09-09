@@ -144,6 +144,11 @@ body{
     padding: 5px 0px ;
 
 }
+
+/*  #############################################
+    #############################################
+*/
+
 .details-page{
     padding: 50px var(--Page-padding) 10px;
     font-size: 16px;
@@ -187,7 +192,7 @@ body{
 
 }
 .flag-container{
-    width: 50%;
+    min-width: 45%;
 }
 .flag-container img{
     width: 100%;
@@ -195,22 +200,28 @@ body{
     object-fit: fill;
 }
 .text-container{
+    padding: 0px 0px;
     display: grid;
-    grid-template-columns: minmax(270px,1fr) minmax(270px,1fr);
-    grid-template-rows: 50px auto 50px;
+    gap: 20px;
+    grid-template-columns: minmax(200px,1fr) minmax(200px,1fr);
+    grid-template-rows: minmax(auto, 100px) minmax(60px,auto) minmax(20px, auto);
 }
 .country-header{
     grid-column:1/-1 ;
     font-weight: 900;
     font-size: 38px;
+    align-self: center;
 
 }
 .border-countries{
     grid-column:1/-1 ;
+    align-self: center;
  
 }
 
-
+span{
+    padding-left: 10px;
+}
 
 
 

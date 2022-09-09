@@ -1,7 +1,7 @@
 let     concat
-let     concatAll             //Value of all countries saved. No need for refetching
+let     concatAll             //Value of all countries saved. No need for looping over all again
 let     data
-let     dataAll
+let     dataAll             // JSON for all countries, fetching again minimised
 const   regionFilter  =     document.getElementById("Filter-by-Region")
 const   abeg          =     document.getElementById('countries-section')
 const   inputSearch   =     document.getElementById('search-input')
@@ -9,7 +9,7 @@ const   back          =     document.getElementById('back')
 const   details       =     document.getElementById('flag-text-container')
 
 fetchAll() 
-inputSearch.addEventListener('keyup', B)
+inputSearch.addEventListener('keyup', search)
 regionFilter.addEventListener('mouseup', filter)
 back.addEventListener('click', ()=>{addClass('details-page', 'hide'); removeClass('countries-section', 'hide');removeClass('filters', 'hide' )})
 
@@ -53,7 +53,7 @@ function run(i) {
                     <p><b>Top Level Domain:</b> <span> ${  needed.topLevelDomain }  </span></p>
                 </div>
                 <div>
-                    <p><b>Currencies:</b> <span>  ${  needed.currencies  }   </span></p>
+                    <p><b>Currencies:</b> <span>  ${  needed.currencies[this.name]  }   </span></p>
                 </div>
                 <div>
                     <p><b>Languages:</b><span> ${ needed.languages  }  </span></p>
@@ -64,59 +64,6 @@ function run(i) {
         </div>
     </div>`
     details.innerHTML = concat
-
-    //{
-    // "name": "Afghanistan",
-    // "topLevelDomain": [
-    //     ".af"
-    // ],
-    // "alpha3Code": "AFG",
-    // "capital": "Kabul",
-    // "subregion": "Southern Asia",
-    // "region": "Asia",
-    // "population": 40218234,
-    // "borders": [
-    //     "IRN",
-    //     "PAK",
-    //     "TKM",
-    //     "UZB",
-    //     "TJK",
-    //     "CHN"
-    // ],
-    // "nativeName": "افغانستان",
-    // "currencies": [
-    //     {
-    //         "code": "AFN",
-    //         "name": "Afghan afghani",
-    //         "symbol": "؋"
-    //     }
-    // ],
-    // "languages": [
-    //     {
-    //         "iso639_1": "ps",
-    //         "iso639_2": "pus",
-    //         "name": "Pashto",
-    //         "nativeName": "پښتو"
-    //     },
-    //     {
-    //         "iso639_1": "uz",
-    //         "iso639_2": "uzb",
-    //         "name": "Uzbek",
-    //         "nativeName": "Oʻzbek"
-    //     },
-    //     {
-    //         "iso639_1": "tk",
-    //         "iso639_2": "tuk",
-    //         "name": "Turkmen",
-    //         "nativeName": "Türkmen"
-    //     }
-    // ],
-    // "flag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
-    // "independent": false }
-
-
-
-
 }
 
 
@@ -156,7 +103,7 @@ async function fetchAll() {
             }
 }       
 
-function B(){
+function search(){
     let Query=inputSearch.value
     let B = `https://restcountries.com/v2/name/${Query}`
     async function fetchB() {
