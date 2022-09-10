@@ -109,7 +109,7 @@ function render(country,index) {
                         <div class="name">${country.name}</div>
                         <div class="population"><b>Population:</b><span>${formatPop(country.population)}</span></div>
                         <div class="region"><b>Region:</b><span>${country.region ?? 'None'}</span></div>
-                        <div class="capital"><b>Capital:</b><span>${country.capital}</span></div>
+                        <div class="capital"><b>Capital:</b><span>${country.capital ?? 'No Capital'}</span></div>
                     </div>
                 </div>
  `
