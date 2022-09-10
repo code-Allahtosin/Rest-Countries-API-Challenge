@@ -57,12 +57,12 @@ function run(i) {
    
      concat=   `
         <div class="flag-text-container">
-        <div class="flag-container"><img src=${ needed.flag }  alt=""></div>
+        <div class="flag-container"><img src=${ needed.flag ?? 'None' }  alt=""></div>
         <div class="text-container">
-        <div class="country-header"><b><span>${  needed.name   }</span></b></div>
+        <div class="country-header"><b><span>${  needed.name ?? 'None'  }</span></b></div>
         <div>
                 <div>
-                    <p><b>Native Name:  </b> <span> ${  needed.nativeName   }  </span></p>
+                    <p><b>Native Name:  </b> <span> ${  needed.nativeName  ?? 'None' }  </span></p>
                 </div>
                 <div>
                     <p> <b>population:</b>  <span>  ${  formatPop(needed.population) }    </span></p>
@@ -71,25 +71,25 @@ function run(i) {
                     <p><b>Region:</b><span> ${ needed.region }    </span></p>
                 </div>
                 <div>
-                    <p><b>Sub-Region:</b> <span>   ${ needed.subregion  }     </span></p>
+                    <p><b>Sub-Region:</b> <span>   ${ needed.subregion ?? 'None' }     </span></p>
                 </div>
                 <div>
-                    <p><b>Capital:</b><span>   ${ needed.capital  }     </span></p>
+                    <p><b>Capital:</b><span>   ${ needed.capital ?? 'No Capital'  }     </span></p>
                 </div>
         </div>
         
         <div> 
                 <div>
-                    <p><b>Top Level Domain:</b> <span> ${  needed.topLevelDomain }  </span></p>
+                    <p><b>Top Level Domain:</b> <span> ${  needed.topLevelDomain ?? 'None' }  </span></p>
                 </div>
                 <div>
-                    <p><b>Currencies:</b> <span>  ${  giveMe(needed.currencies)  }   </span></p>
+                    <p><b>Currencies:</b> <span>  ${  giveMe(needed.currencies) ?? 'None' }   </span></p>
                 </div>
                 <div>
-                    <p><b>Languages:</b><span> ${ giveMe(needed.languages)  }  </span></p>
+                    <p><b>Languages:</b><span> ${ giveMe(needed.languages) ?? 'None' }  </span></p>
                 </div>
             </div>
-            <div class="border-countries"> <b>Border Countries:</b> <span>  ${needed.borders  }   </span></div>
+            <div class="border-countries"> <b>Border Countries:</b> <span>  ${needed.borders ?? 'No border Countries'  }   </span></div>
 
         </div>
     </div>`
@@ -108,7 +108,7 @@ function render(country,index) {
                     <div class="tile-details">
                         <div class="name">${country.name}</div>
                         <div class="population"><b>Population:</b><span>${formatPop(country.population)}</span></div>
-                        <div class="region"><b>Region:</b><span>${country.region}</span></div>
+                        <div class="region"><b>Region:</b><span>${country.region ?? 'None'}</span></div>
                         <div class="capital"><b>Capital:</b><span>${country.capital}</span></div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ async function fetchAll() {
 
             return
         }  catch (error) {
-             console.log(error)
+             console.log(error);  alert("Error Encountered. Please reload the page!")
             }
 }       
 
@@ -148,7 +148,8 @@ function search(){
     
                 return
             }  catch (error) {
-                    console.log(error)
+                                 console.log(error);  alert("Error Encountered. Please reinput search parameters!")
+
                 }
             }       
 
@@ -174,7 +175,8 @@ function filter(){
         
                     return
                 }  catch (error) {
-                        console.log(error)
+                                     console.log(error);  alert("Error Encountered. Please choose Region again!")
+
                     }
                 }       
 
@@ -186,8 +188,9 @@ function formatPop(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function giveMe(source) {
-    let b=[]
+   if (source){ let b=[]
     source.forEach((a)=>{b.push(a.name)})
     
-    return b
+    return b}
+    else{ return}
 }
